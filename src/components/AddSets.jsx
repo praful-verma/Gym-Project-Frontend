@@ -7,7 +7,7 @@ function AddSets({ex,deleteWorkOut,addWorkOutHandler,deleteBtn,exDetail}) {
   // console.log("Exerise in set is",ex)
 
   const formRef = useRef({
-      setNo: "",
+      setNo: 0,
       weight: "",
       reps: "",
     });
@@ -176,14 +176,14 @@ function AddSets({ex,deleteWorkOut,addWorkOutHandler,deleteBtn,exDetail}) {
             <label className="block text-sm font-medium text-card-foreground ">
               SetNo.
             </label>
-            <input
+            {/* <input
               type="text"
               onChange={(e) => {
                 formRef.current.setNo = e.target.value;
               }}
               className="w-[20%] px-1 py-1 bg-input text-center rounded-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               placeholder="1"
-            />
+            /> */}
           </div>
 
           <div className="flex flex-row gap-2 items-center">
@@ -267,6 +267,8 @@ function AddSets({ex,deleteWorkOut,addWorkOutHandler,deleteBtn,exDetail}) {
             className="w-[10%] h-fit text-blue-700 hover:font-bold hover:text-blue-900 py-1 px-2 bg-blue-400 rounded-sm hover:scale-95 "
             onClick={() => {
               // push a shallow copy of the ref object so each entry is independent
+              
+              formRef.current.setNo=formRef.current.setNo+1;
               setSets((prev) => [...prev, { ...formRef.current }]);
               // mark that sets should be shown
               setShowSetsHandler(true);
